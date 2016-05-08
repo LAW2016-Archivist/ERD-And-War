@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08 Mei 2016 pada 11.00
--- Versi Server: 5.6.20
+-- Generation Time: May 08, 2016 at 12:29 PM
+-- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `nama`) VALUES
@@ -41,7 +41,7 @@ INSERT INTO `category` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `comment_status`
+-- Table structure for table `comment_status`
 --
 
 CREATE TABLE IF NOT EXISTS `comment_status` (
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `comment_status` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `comment_thread`
+-- Table structure for table `comment_thread`
 --
 
 CREATE TABLE IF NOT EXISTS `comment_thread` (
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `comment_thread` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `post`
+-- Table structure for table `post`
 --
 
 CREATE TABLE IF NOT EXISTS `post` (
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rate`
+-- Table structure for table `rate`
 --
 
 CREATE TABLE IF NOT EXISTS `rate` (
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `rate` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `status`
+-- Table structure for table `status`
 --
 
 CREATE TABLE IF NOT EXISTS `status` (
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `status` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `thread`
+-- Table structure for table `thread`
 --
 
 CREATE TABLE IF NOT EXISTS `thread` (
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `thread` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `thread`
+-- Dumping data for table `thread`
 --
 
 INSERT INTO `thread` (`id`, `id_user`, `id_category`, `judul`, `datel`, `status`) VALUES
@@ -131,29 +131,30 @@ INSERT INTO `thread` (`id`, `id_user`, `id_category`, `judul`, `datel`, `status`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
 `id` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
-  `foto` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `gender` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `foto`, `email`, `password`, `gender`) VALUES
-(1, 'Arrianda', 'test', 'test', 'test', 'test');
+INSERT INTO `user` (`id`, `nama`, `image`, `email`, `password`, `gender`) VALUES
+(1, 'Arrianda', 'test', 'test', 'test', 'test'),
+(2, 'Saufi Rahman', '', 'saufi.rahman@threadizzy.dev', '1234', 'Male');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_followers`
+-- Table structure for table `user_followers`
 --
 
 CREATE TABLE IF NOT EXISTS `user_followers` (
@@ -258,59 +259,59 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user_followers`
 --
 ALTER TABLE `user_followers`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `comment_status`
+-- Constraints for table `comment_status`
 --
 ALTER TABLE `comment_status`
 ADD CONSTRAINT `comment_status_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
 ADD CONSTRAINT `comment_status_ibfk_2` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `comment_thread`
+-- Constraints for table `comment_thread`
 --
 ALTER TABLE `comment_thread`
 ADD CONSTRAINT `comment_thread_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
 ADD CONSTRAINT `comment_thread_ibfk_2` FOREIGN KEY (`id_thread`) REFERENCES `thread` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `post`
+-- Constraints for table `post`
 --
 ALTER TABLE `post`
 ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
 ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`id_thread`) REFERENCES `thread` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `rate`
+-- Constraints for table `rate`
 --
 ALTER TABLE `rate`
 ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
 ADD CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`id_thread`) REFERENCES `thread` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `status`
+-- Constraints for table `status`
 --
 ALTER TABLE `status`
 ADD CONSTRAINT `status_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `thread`
+-- Constraints for table `thread`
 --
 ALTER TABLE `thread`
 ADD CONSTRAINT `thread_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
 ADD CONSTRAINT `thread_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `user_followers`
+-- Constraints for table `user_followers`
 --
 ALTER TABLE `user_followers`
 ADD CONSTRAINT `user_followers_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),

@@ -20,14 +20,12 @@ public class RegisterController extends HttpServlet
             try 
             {
                 User user = new User();
-     
+                
                 user.setFirst_name(request.getParameter("first_name"));
                 user.setLast_name(request.getParameter("last_name"));
                 user.setUser(request.getParameter("user"));
                 user.setPwd(request.getParameter("pwd"));
-
                 user.RegisterUser();
-
                 out.println("<br>");
                 out.println("<br>");
                 out.println("<center>Great!!!</center>");
