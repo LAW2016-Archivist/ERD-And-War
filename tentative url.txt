@@ -1,0 +1,30 @@
+ACTION 	PATH						Controller (servlet)            		jsp								go to after POST
+=============================================================================================================================
+GET 	/							HomeController							index.jsp							
+POST 	/login						SessionController?action=login											/home
+POST 	/logout						SessionController?action=logout											/
+
+GET		/home 						HomeController							user-home.jsp
+GET 	/profile					ProfileController?action=profile		my-profile.jsp
+GET		/profile/edit 				ProfileController?action=edit			edit-profile.jsp
+POST	/profile/edit 				ProfileController?action=edit 											/profile
+
+GET 	/category 					CategoryController						form-add-category-thread.jsp
+POST 	/category/add 				CategoryController?action=add											/category
+GET 	/category/edit 				CategoryController?action=edit			form-edit-category-thread.jsp	
+POST 	/category/edit 				CategoryController?action=edit											/category
+POST	/category/delete			CategoryController?action=delete										/category
+
+GET 	/thread 					ThreadController						manage-thread.jsp
+GET 	/thread/add 				ThreadController?action=add				form-add-thread.jsp	
+POST 	/thread/add 				ThreadController?action=add												/thread/add
+GET 	/thread/edit?id=xy			ThreadController?action=edit			form-edit-thread.jsp
+POST 	/thread/edit?id=xy			ThreadController?action=edit											/thread
+GET		/thread/delete?id=xy		ThreadController?action=delete											/thread
+
+GET 	/status 					StatusController						
+GET 	/status/add 				StatusController?action=add 			
+POST 	/status/add 				StatusController?action=add 			
+GET		/status/edit 				StatusController?action=edit 			
+POST	/status/edit 				StatusController?action=edit 			
+POST 	/status/delete				StatusController?action=delete 			
