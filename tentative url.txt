@@ -5,15 +5,20 @@ POST 	/login						SessionController?action=login											/home
 POST 	/logout						SessionController?action=logout											/
 
 GET		/home 						HomeController							user-home.jsp
-GET 	/profile					ProfileController?action=profile		my-profile.jsp
-GET		/profile/edit 				ProfileController?action=edit			edit-profile.jsp
-POST	/profile/edit 				ProfileController?action=edit 											/profile
+GET 	/profile/{id}				ProfileController?action=view&id={id}	my-profile.jsp
+GET		/profile/{id}/edit 			ProfileController?action=edit&id={id}	edit-profile.jsp
+POST	/profile/{id}/edit 			ProfileController?action=edit&id={id} 											/profile
 
-GET 	/category 					CategoryController						form-add-category-thread.jsp
+
+POST	/profile/{id}/follow		UserFollowController?action=follow&id={id}
+GET		/profile/{id}/follower 		UserFollowController?action=following&id={id}
+GET		/profile/{id}/following		UserFollowController?action=follower&id={id}
+
+GET 	/category 					CategoryController?action=list			form-add-category-thread.jsp
 POST 	/category/add 				CategoryController?action=add											/category
-GET 	/category/edit 				CategoryController?action=edit			form-edit-category-thread.jsp	
-POST 	/category/edit 				CategoryController?action=edit											/category
-POST	/category/delete			CategoryController?action=delete										/category
+GET 	/category/{id}/edit 		CategoryController?action=edit&id={id}	form-edit-category-thread.jsp	
+POST 	/category/{id}/edit 		CategoryController?action=edit&id={id}									/category
+POST	/category/{id}/delete		CategoryController?action=delete&id={id}								/category
 
 GET 	/thread 					ThreadController						manage-thread.jsp
 GET 	/thread/add 				ThreadController?action=add				form-add-thread.jsp	
@@ -28,3 +33,8 @@ POST 	/status/add 				StatusController?action=add
 GET		/status/edit 				StatusController?action=edit 			
 POST	/status/edit 				StatusController?action=edit 			
 POST 	/status/delete				StatusController?action=delete 			
+
+
+
+URL mapping menggunakan library URLRewriteFilter: http://tuckey.org/urlrewrite/
+Silahkan cek WEB-INF/urlrewrite.xml untuk melihat rule URL rewrite.
