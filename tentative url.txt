@@ -7,10 +7,11 @@ POST 	/logout						SessionController?action=logout											/
 GET		/home 						HomeController							user-home.jsp
 GET 	/profile/{id}				ProfileController?action=view&id={id}	my-profile.jsp
 GET		/profile/{id}/edit 			ProfileController?action=edit&id={id}	edit-profile.jsp
-POST	/profile/{id}/edit 			ProfileController?action=edit&id={id} 											/profile
+POST	/profile/{id}/edit 			ProfileController?action=edit&id={id} 									/profile
 
 
 POST	/profile/{id}/follow		UserFollowController?action=follow&id={id}
+POST	/profile/{id}/unfollow		UserFollowController?action=unfollow&id={id}
 GET		/profile/{id}/follower 		UserFollowController?action=following&id={id}
 GET		/profile/{id}/following		UserFollowController?action=follower&id={id}
 
